@@ -37,6 +37,12 @@ extension ShowListViewController: ShowListDisplayable {
     func showSearchResult(_ result: [ListItem]) {
         DispatchQueue.main.async {
             self.showsSearchBar.text = ""
+            if result.count == 0 {
+                self.showsTableView.setEmptyView(message: "No shows found.")
+            }
+            else {
+                self.showsTableView.restore()
+            }
             self.showsTableView.reloadData()
         }
     }
